@@ -12,7 +12,7 @@
    Isso descarta o cache antigo e entrega os arquivos novos.
    ───────────────────────────────────────────────────────────── */
 
-const VERSAO = "sg-v1";
+const VERSAO = "sg-v2";
 const CACHE_ESTATICO = `${VERSAO}-estatico`;
 const CACHE_PAGINAS = `${VERSAO}-paginas`;
 
