@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ricbenedicto.github.io/sg-reabilitacao/sitemap.xml
