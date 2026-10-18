@@ -379,3 +379,34 @@ a{color:inherit}
 .update button:active{transform:scale(.97)}
 .update .update__x{border-color:transparent;opacity:.75}
 .update .update__x:hover{opacity:1}
+
+/* ─────────────────────────────────────────────────────────────
+   Impressão e exportação em PDF
+   Tira o que só faz sentido na tela, garante que as cores saiam
+   e evita que uma foto ou um depoimento seja cortado ao meio
+   na virada de página.
+   ───────────────────────────────────────────────────────────── */
+@media print{
+  *,*::before,*::after{
+    print-color-adjust:exact;-webkit-print-color-adjust:exact;
+    animation:none!important;transition:none!important}
+  /* elementos de tela não entram no papel */
+  .wa,.update,.lb,.skip,.mast__nav{display:none!important}
+  /* a entrada animada não pode sair invisível */
+  .enter{opacity:1!important;transform:none!important}
+  /* o parallax desloca a foto por JS; no papel ela volta ao lugar */
+  .photo img{transform:none!important}
+  .photo .frame{overflow:visible}
+  /* ritmo mais compacto, sem o respiro de tela */
+  .fold{padding-block:var(--space-2xl)}
+  .fold--tight{padding-block:var(--space-xl)}
+  /* nada de conteúdo partido no meio */
+  figure,.plate,.quote,.index__row,.team-m,.facts li{break-inside:avoid}
+  h1,h2,h3{break-after:avoid}
+  .mast{break-after:avoid}
+  /* o endereço dos links aparece, já que no papel não dá para clicar */
+  .ways a::after{content:" — " attr(href);font-size:var(--text-xs);color:var(--color-muted);
+    word-break:break-all}
+  .ways a[href^="tel:"]::after{content:""}
+  @page{margin:12mm}
+}
